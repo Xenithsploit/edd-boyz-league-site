@@ -10,10 +10,12 @@ import {
 const CommentInput = ({ postId }) => {
   const { user } = useUser();
   const [text, setText] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   const handleComment = async () => {
     if (!text.trim() || !user) return;
 
+    setSubmitting(true);
     try {
       const commentRef = collection(db, 'posts', postId, 'comments');
       await addDoc(commentRef, {
@@ -27,6 +29,8 @@ const CommentInput = ({ postId }) => {
     } catch (error) {
       console.error('Error submitting comment:', error);
       alert('Failed to post comment.');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -41,10 +45,10 @@ const CommentInput = ({ postId }) => {
       />
       <button
         onClick={handleComment}
-        disabled={!user || !text.trim()}
+       // disabled={!user || !text.trim() || submitting}
         className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400 transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Post
+        {submitting ? 'Posting...' : 'Post'}
       </button>
     </div>
   );

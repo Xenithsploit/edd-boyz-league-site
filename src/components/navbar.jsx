@@ -9,7 +9,6 @@ import { ChevronDownIcon, Bars3Icon } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
   const { user, loading } = useUser();
-//  const [menuOpen, setMenuOpen] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const handleLogin = async () => {
@@ -28,7 +27,7 @@ const Navbar = () => {
     try {
       await signOut(auth);
     } catch (error) {
-      console.error('Logout failed:', error);
+      console.error("Logout failed:", error);
     }
   };
 
@@ -42,14 +41,18 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-black text-white px-4 py-3 shadow-md flex justify-between items-center">
-      <Link to="/" className="text-2xl font-extrabold tracking-widest relative whitespace-nowrap">
-        <span className="text-red-600 drop-shadow-[2px_2px_0_#fff]">EDD</span>
-        <span className="text-white drop-shadow-[2px_2px_0_#ff0000] ml-1">BOYZ</span>
-        <span className="text-yellow-400 drop-shadow-[2px_2px_0_#000] ml-1">NETWORK</span>
-      </Link>
-
-      {/* Mobile Menu */}
+    <nav className="bg-gradient-to-r from-black to-red-900 text-white p-4 flex justify-between items-center shadow-2xl">
+      <Link to="/" className="text-2xl font-extrabold tracking-widest relative">
+        <span className="text-red-600 drop-shadow-[2px_2px_0_#fff]">
+          EDD
+        </span>
+        <span className="text-white drop-shadow-[2px_2px_0_#ff0000] ml-1">
+          BOYZ
+        </span>
+        <span className="text-yellow-400 drop-shadow-[2px_2px_0_#000] ml-1">
+          NETWORK
+        </span>
+      </Link>      {/* Mobile Menu */}
       <div className="md:hidden">
         <Menu as="div" className="relative inline-block text-left">
           <Menu.Button className="inline-flex items-center px-3 py-2 text-sm font-bold bg-red-700 hover:bg-red-600 rounded shadow-md transition">
@@ -68,7 +71,7 @@ const Navbar = () => {
             leaveTo="transform opacity-0 scale-95"
           >
             <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right bg-black text-white divide-y divide-gray-700 rounded-md shadow-xl ring-1 ring-red-600 z-50">
-              <div className="p-1 space-y-1">
+              <div className="p-1">
                 {[
                   ['Home', '/'],
                   ['Teams', '/teams'],
@@ -129,29 +132,23 @@ const Navbar = () => {
           ['Select Team', '/select-team'],
           ['Profile', '/profile'],
           ['Predictions', '/predictionUI'],
-          ['Admin Dashboard', '/dashboard'],
+          ['AdminDashboard', '/dashboard'],
         ].map(([label, link]) => (
-          <Link key={link} to={link} className="hover:text-red-400 font-semibold text-sm transition">
+          <Link key={link} to={link} className="hover:text-red-400 font-semibold transition">
             {label}
           </Link>
         ))}
 
         {user?.role === 'commissioner' && (
           <>
-            <Link to="/VODreview" className="hover:text-red-400 font-semibold text-sm transition">Review VODs</Link>
-            <Link to="/add-matchup" className="hover:text-red-400 font-semibold text-sm transition">Add Matchup</Link>
+            <Link to="/VODreview" className="hover:text-red-400 font-semibold transition">Review VODs</Link>
+            <Link to="/add-matchup" className="hover:text-red-400 font-semibold transition">Add Matchup</Link>
           </>
         )}
 
         {user && (
           <div className="flex items-center space-x-2">
-            {user.profilePic && (
-              <img
-                src={user.profilePic}
-                alt="Profile"
-                className="w-8 h-8 rounded-full border-2 border-red-500"
-              />
-            )}
+            {user.profilePic && <img src={user.profilePic} alt="Profile" className="w-8 h-8 rounded-full border-2 border-red-500" />}
             <span className="text-sm font-semibold">{user.username || user.displayName}</span>
           </div>
         )}
@@ -159,7 +156,7 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={handleLogout}
-            className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-500 shadow-md text-sm"
+            className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-500 shadow-md"
           >
             Logout
           </button>
@@ -167,7 +164,7 @@ const Navbar = () => {
           <button
             onClick={handleLogin}
             disabled={isLoggingIn}
-            className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-500 shadow-md text-sm"
+            className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-500 shadow-md"
           >
             {isLoggingIn ? 'Logging in...' : 'Login'}
           </button>

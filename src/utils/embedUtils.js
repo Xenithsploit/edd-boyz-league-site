@@ -13,5 +13,16 @@ export const getEmbedUrl = (url) => {
     return `https://player.twitch.tv/?video=${videoId}&parent=localhost`; // Change parent to your domain in production
   }
 
+  {vod.type === 'twitch' && (
+  <iframe
+    src={formatTwitchEmbed(vod.url)}
+    width="640"
+    height="360"
+    allowFullScreen
+    frameBorder="0"
+  />
+)}
+
+
   return null;
 };
