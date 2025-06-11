@@ -94,6 +94,7 @@ const Navbar = () => {
                   <>
                     <Menu.Item><Link to="/VODreview" className="block px-4 py-2 hover:bg-red-700 rounded">Review VODs</Link></Menu.Item>
                     <Menu.Item><Link to="/add-matchup" className="block px-4 py-2 hover:bg-red-700 rounded">Add Matchup</Link></Menu.Item>
+                    <Menu.Item><Link to="/update-results" className="block px-4 py-2 hover:bg-red-700 rounded">Update Matchups</Link></Menu.Item>
                   </>
                 )}
               </div>
@@ -133,6 +134,7 @@ const Navbar = () => {
           ['Profile', '/profile'],
           ['Predictions', '/predictionUI'],
           ['AdminDashboard', '/dashboard'],
+          ['UpdateResults', "/update-results"]
         ].map(([label, link]) => (
           <Link key={link} to={link} className="hover:text-red-400 font-semibold transition">
             {label}
@@ -141,6 +143,7 @@ const Navbar = () => {
 
         {user?.role === 'commissioner' && (
           <>
+            <Link to="/update-results" className="hover:text-red-400 font-semibold transition">Update Results</Link>
             <Link to="/VODreview" className="hover:text-red-400 font-semibold transition">Review VODs</Link>
             <Link to="/add-matchup" className="hover:text-red-400 font-semibold transition">Add Matchup</Link>
           </>

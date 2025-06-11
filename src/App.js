@@ -15,6 +15,7 @@ import SubmitVOD from './pages/SubmitVOD.jsx';
 import AdminVODReview from './pages/AdminVODReview.jsx';
 import PredictionSubmission from './pages/predictionUI.jsx';
 import AddMatchup from './pages/AddMatchup.jsx';
+import AdminUpdateResults from './components/AdminUpdateResults.jsx';
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
           <Route path="/submit-vod" element={<SubmitVOD />} />
           <Route path="/VODreview" element={<AdminVODReview />} />
           <Route path="/predictionUI" element={<PredictionSubmission />} />        
-          <Route path="/add-matchup" element={<AddMatchup />} />        
+          <Route path="/add-matchup" element={<AddMatchup />} /> 
+          <Route path="/update-results" element={<AdminUpdateResults />} />       
         </Routes>
       </Router>
     </UserProvider>

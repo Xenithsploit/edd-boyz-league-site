@@ -134,18 +134,24 @@ const News = () => {
               </p>
               <p className="mb-2 text-gray-200">{post.content}</p>
 
-              <div className="flex items-center space-x-4 text-sm">
+              <div className="flex flex-wrap items-center gap-4 mt-2 text-sm sm:text-base">
                 <button
                   onClick={() => handleVote(post.id, 'like')}
-                  className={`hover:text-green-500 ${post.voters?.[user?.uid] === 'like' ? 'text-green-400 font-bold' : ''}`}
                   disabled={!user}
+                  className={`flex items-center gap-1 px-3 py-1 rounded-full border transition-all duration-150 
+                    ${post.voters?.[user?.uid] === 'like' 
+                      ? 'bg-green-600 text-white border-green-700' 
+                      : 'bg-gray-800 text-gray-300 hover:bg-green-500 hover:text-white border-gray-700'}`}
                 >
                   👍 {post.likes || 0}
                 </button>
                 <button
                   onClick={() => handleVote(post.id, 'dislike')}
-                  className={`hover:text-red-400 ${post.voters?.[user?.uid] === 'dislike' ? 'text-red-300 font-bold' : ''}`}
                   disabled={!user}
+                  className={`flex items-center gap-1 px-3 py-1 rounded-full border transition-all duration-150 
+                    ${post.voters?.[user?.uid] === 'dislike' 
+                      ? 'bg-red-600 text-white border-red-700' 
+                      : 'bg-gray-800 text-gray-300 hover:bg-red-500 hover:text-white border-gray-700'}`}
                 >
                   👎 {post.dislikes || 0}
                 </button>

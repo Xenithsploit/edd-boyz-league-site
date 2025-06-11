@@ -1,4 +1,4 @@
-// src/components/PredictionUI.jsx
+""// src/components/PredictionUI.jsx
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { useUser } from '../contexts/UserContext';
@@ -94,7 +94,7 @@ const PredictionUI = () => {
             <div
               key={match.id}
               className={`p-5 rounded-lg transition-all duration-200 border-2 ${
-                selectedMatchId === match.matchId
+                selectedMatchId === match.id
                   ? 'border-red-500 shadow-red-500 shadow-md'
                   : 'border-gray-700'
               } bg-gradient-to-br from-gray-900 to-black`}
@@ -105,12 +105,12 @@ const PredictionUI = () => {
               <div className="flex justify-center space-x-4">
                 <button
                   className={`px-6 py-2 rounded-full font-semibold transition-transform duration-150 transform hover:scale-105 ${
-                    selectedWinner === match.team1 && selectedMatchId === match.matchId
+                    selectedWinner === match.team1 && selectedMatchId === match.id
                       ? 'bg-green-600 text-white shadow-md'
                       : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
                   }`}
                   onClick={() => {
-                    setSelectedMatchId(match.matchId);
+                    setSelectedMatchId(match.id);
                     setSelectedWinner(match.team1);
                   }}
                 >
@@ -118,12 +118,12 @@ const PredictionUI = () => {
                 </button>
                 <button
                   className={`px-6 py-2 rounded-full font-semibold transition-transform duration-150 transform hover:scale-105 ${
-                    selectedWinner === match.team2 && selectedMatchId === match.matchId
+                    selectedWinner === match.team2 && selectedMatchId === match.id
                       ? 'bg-green-600 text-white shadow-md'
                       : 'bg-gray-800 text-gray-200 hover:bg-gray-700'
                   }`}
                   onClick={() => {
-                    setSelectedMatchId(match.matchId);
+                    setSelectedMatchId(match.id);
                     setSelectedWinner(match.team2);
                   }}
                 >
