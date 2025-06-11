@@ -82,6 +82,7 @@ const Navbar = () => {
                   ['Profile', '/profile'],
                   ['Predictions', '/predictionUI'],
                   ['Admin Dashboard', '/dashboard'],
+                  ['Update Matchups','/update-results']
                 ].map(([label, link]) => (
                   <Menu.Item key={link}>
                     <Link to={link} className="block px-4 py-2 hover:bg-red-700 rounded">
